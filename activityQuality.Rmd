@@ -61,7 +61,7 @@ The Training set contains **`r nrow(datTrain)`** observations, and the Test set 
 
 
 ## II. Training a Random Forest Classification Model 
-A Random Forest model is fit to the Training set to predict the activity quality variable **classe** on the `r numFeats` selected features.
+A Random Forest model is fit to the Training set to predict the activity quality variable **classe** on the `r numFeats` selected features. The training involves **4-fold cross-validation**.
 ``` {r, results = 'hide'}
 # Train a Random Forest model
 model <- train(classe ~ ., data = datTrain, method = 'rf',
@@ -76,4 +76,6 @@ The trained model achieves high predictive accuracy on the seperate Testing data
 predTest <- predict(model, datTest)
 confusionMatrix(predTest, datTest$classe)
 ```
+Thus, we expect an **out-of-sample error rate of only approximately 1%**.
+
 Finally, the model also performs well in the *Practical Machine Learning* course's separate testing dataset, classifying correctly 20 out of 20 examples.

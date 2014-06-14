@@ -64,7 +64,7 @@ The Training set contains **11776** observations, and the Test set contains **78
 
 
 ## II. Training a Random Forest Classification Model 
-A Random Forest model is fit to the Training set to predict the activity quality variable **classe** on the 52 selected features.
+A Random Forest model is fit to the Training set to predict the activity quality variable **classe** on the 52 selected features. The training involves **4-fold cross-validation**.
 
 ```r
 # Train a Random Forest model
@@ -115,4 +115,6 @@ confusionMatrix(predTest, datTest$classe)
 ## Detection Prevalence    0.285    0.195    0.176    0.161    0.183
 ## Balanced Accuracy       0.999    0.996    0.991    0.991    0.997
 ```
+Thus, we expect an **out-of-sample error rate of only approximately 1%**.
+
 Finally, the model also performs well in the *Practical Machine Learning* course's separate testing dataset, classifying correctly 20 out of 20 examples.
